@@ -1,0 +1,231 @@
+/*esse doc mexe nas paginas de INDEX*/
+@import url('https://fonts.cdnfonts.com/css/rookiepunk');
+
+/*SECTION DAS CIDADES - 2*/
+.cidades-container {
+  display: flex;
+  width: 100%;
+  background-color: #7a1f1a;
+  margin-right: -5px;
+}
+
+/* Coluna da esquerda – espaço para imagem grande */
+.cidades-esquerda {
+  width: 600px;            
+  flex-shrink: 0; /*ver como funciona dps*/
+}
+
+.cidades-esquerda img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;                
+}
+
+/* Coluna da direita, onde ficam os cards */
+.cidades-direita {
+  flex: 1;  
+  min-width: 0;            
+  display: flex;
+  flex-direction: column;
+  margin: 50px 10px; 
+  justify-content: left;
+}
+
+/* Carrossel horizontal */
+.cidades-scroll {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  padding: 20px 5px 20px 5px; 
+  scroll-behavior: smooth;
+}
+
+/*.cidades-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.cidades-scroll::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 10px;
+}*/
+
+/* Cards das cidades */
+.cidade-card {
+  background-color: #131018;
+  width: 270px;
+  height: 550px;
+  border-radius: 15px;
+  padding: 10px;
+  /*box-sizing: border-box; -- so se der muito errado com a img*/ 
+  /*display: flex;*/
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cidade-card img {
+  display: flex;
+  width: 90%;
+  height: 60%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.texto-card {
+  color: #fff;
+  font-size: 18px;
+  text-align: justify;  /*fica como bloco */
+  line-height: 1.3; /*é p separação entre um linha e outra*/
+  margin-top: 20px;
+}
+
+
+/*SECTION DO CATALOGO - 3 */
+.catalogo-container {
+  display: flex;
+  height: 120vh; /* ocupa a tela toda */
+  overflow: hidden;
+}
+
+/* esquerda  */
+.catalogo-esquerda {
+  flex: 1; 
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.catalogo-esquerda img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /*NAO SEI COMO FUNCIONAAAAAAAAAAAAAAA*/
+}
+
+/* direita */
+.catalogo-direita {
+  flex: 1.3;
+  background-color: #2c2b2f;
+  display: flex;
+  flex-direction: column;
+  padding: 60px;
+}
+
+.catalogo-direita h2 {
+  margin: 0 0 32px 0;
+  font-size: 26px; /*1.4rem - nao sei como funciona o rem*/ 
+  text-transform: lowercase;
+}
+
+/* --- scroll interno dentro do catalogo --- */
+.catalogo-scroll {
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 10px;
+}
+
+
+/*nao sei se pode (mas é p deixar bonito) =============================================*/
+.catalogo-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.catalogo-scroll::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 4px;
+}
+
+
+/*  itens que estao dentro do catalogo  */
+.item {
+  background-color: #3d3b3f;
+  margin: 20px;
+  border-radius: 10px;
+  height: 120px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*SECTION DO JOGO  - 4 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+/* Container geral */
+.jogo-container {
+  display: flex;
+  height: 100vh;
+}
+
+/*  esquerda  */
+.jogo-esquerda {
+  flex: 1;
+  background-color: #1e1d1f;
+  padding: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.jogo-esquerda h2 {
+  font-size: 26px;
+  margin-bottom:35px;
+}
+
+/* Caixa de texto laranja p as regras */
+.caixa-texto {
+  background-color: #b14b15;
+  background-image: url(../assets/img/fundo_laranja2_jogo.png);
+  padding: 30px;
+  border-radius: 10px;
+  width: 550px;
+  height: 350px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.caixa-texto p {
+  margin: 10px 0;
+  line-height: 1.4; /*separação entre linhas*/
+}
+
+/* botão do jogo */
+.botao-iniciar {
+  margin-top: 20px;
+  background-color: #f5f5f5;
+  color: #000;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  justify-content: right;
+  /*transition: background 0.2s; vai saber pq ficou vermelho*/
+}
+
+.botao-iniciar:hover {
+  background-color: #ddd;
+}
+
+/* direita  */
+.jogo-direita {
+  flex: 1.2;
+  background-color: #2c2b2f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.colagem {
+
+  width: 100%;
+  height: 100%;
+}
+
+.colagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

@@ -1,0 +1,175 @@
+@import url('https://fonts.cdnfonts.com/css/rookiepunk'); /*fonte de titulo*/
+@import url('https://fonts.cdnfonts.com/css/bosil-unique'); /*fonte do corpo*/
+
+body {
+  margin: 0;
+  font-family: 'bosil-unique', sans-serif; /*mudar dps dnv aqui ****************************************************************/
+  background: url('../assets/img/img_LOGIN.png')  center/cover; /*ficou tudo torto (o problema é a imagem)*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.rookie-font{
+  font-family: 'RookiePunk', sans-serif; /*so arrumar quais vao com essa fonte*/
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+
+/*  card do negocio todo */
+.cartao-login {
+  display: flex;
+  background: rgba(0, 0, 0, 0.6); /*o ultimo afeta a opacidade do elemento sla*/
+  color: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 1100px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px); /*filtro embaçado p caixa*/
+}
+
+/* embaçado - lado esquerdo */
+.lado-esquerdo {
+  flex: 1;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lado-esquerdo h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.lado-esquerdo p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #ddd;
+}
+
+/*  parte do form  */
+.lado-direito {
+  flex: 1;
+  background: rgba(15, 15, 15, 0.8);
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lado-direito h2 {
+  margin-bottom: 25px;
+  font-size: 24px;
+}
+
+/*  form de login  */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 300px;
+}
+
+.formulario input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #666; /*so a linha do input*/
+  color: #fff;
+  margin-bottom: 20px;
+  padding: 10px 5px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.formulario input:focus {
+  border-color: #c21717;
+}
+
+.formulario button {
+  background-color: #c21717;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  /**transition: background 0.3s;*/
+}
+
+.formulario button:hover {
+  background-color: #c21717;
+}
+
+/*  as linhas de divisao --------------------------------------- */
+.divisor {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 25px 0;
+  color: #aaa;
+}
+
+.divisor .linha {
+  flex: 1;
+  height: 1px;
+  background: #444;
+}
+
+/* redireciona p login ou cadastro */
+.texto-final {
+  margin-top: 30px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.texto-final a {
+  color: #f9982f;
+  text-decoration: none;
+}
+
+.texto-final a:hover {
+  text-decoration: underline;
+}
+
+/*campo do loading*/
+.loading-div {
+  width: 50px;
+  display: none; 
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}
+
+/*campo do erro*/
+#div_erros_login { /*mensagem de erro aqui*/
+  display: none
+}
+
+
+.alerta_erro{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card_erro {
+  display: none;
+  background-color: #fff;
+  color: black;
+  width: 230px;
+  position: fixed;
+  border-radius: 4px;
+  border: #ED145B 3px solid;
+  padding: 10px;
+  margin-right: 10%;
+ 
+}
+
+.card_erro #mensagem_erro{
+  font-weight: 500;
+  font-size: 20px;
+}

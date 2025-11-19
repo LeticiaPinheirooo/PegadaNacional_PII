@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Pegada Nacional</title>
+
+    <script src="./js/sessao.js"></script>
+    <link rel="stylesheet" href="css/login_cadastro.css">
+    
+    <link rel="icon" href="./assets/icon/favicon2.ico">
+</head>
+
+<body>
+
+    <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
+    </div>
+    <div class="pagina-login">
+        <div class="cartao-login">
+            <div class="lado-esquerdo">
+                <h1 class="rookie-font">Bem vindo de volta!</h1>
+                <p>imagina um texto bom de introduçao p o login aqui aaaaaa lorem ipsum.</p>
+            </div>
+
+            <div class="lado-direito">
+                <h2 class="rookie-font">Login</h2>
+
+                <div class="formulario">
+
+                    <input id="email_input" type="email" placeholder="Seu e-mail" required>
+
+                    <input id="senha_input" type="password" placeholder="Inserir senha" required>
+
+                    <button class="botao" onclick="entrar()"><a>Entrar</a></button>
+
+                    <div id="div_aguardar" class="loading-div">
+                        <img style="width: 300px; height: 155px; margin-top: 15px;" src="./assets/video/DJ_loading.gif" id="loading-gif"> <!-- mais facil deixar desse tamanho do que centralizar essa coisa--> 
+                    </div>
+
+                    <div id="div_erros_login"></div>
+                </div>
+
+
+                <p class="texto-final">Não tem conta? <a href="cadastro.html">Crie uma conta</a></p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+<script>
+
+
+    function entrar() {
+        aguardar(); //chama a funcao do loading
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Por favor, preencha todos os campos para entrar.";
+            finalizarAguardar();
+            setInterval(sumirMensagem, 5000); //nao sei se coloca aqui
+            return false;
+        }
+        else {
+            //mudei um monte de coisa  aqui -- tirei o sumir mensagem pq quebrava a troca de tela
+            fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    // renomeei para DADOS p nao parecer uma lista de aquarios sla
+                    sessionStorage.DADOS = JSON.stringify(json.dados)
+
+                    setTimeout(function () {
+
+                        window.location = "dashboard/dashboard_PN.html"; // redireciona para outra pagin dps do login
+                    }, 1000);
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+            finalizarAguardar("Erro de conexão. Verifique se o servidor está ativo.");
+        })
+    
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+        return false;
+    }
+
+</script>

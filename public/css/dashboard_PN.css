@@ -1,0 +1,78 @@
+/* navbar aqui */
+.navbar {
+    background-color: #110E16;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.navbar-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* parte da logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-box {
+  width: 45px;
+  height: 30px;
+  background-image: url("/assets/img/LOGO.png"); /* nao sei como funciona - no html tem a img tbm */
+  border-radius: 4px;
+}
+
+.logo span {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ddd;
+  text-transform: uppercase;
+}
+
+/* menu dos botoes */
+.menu {
+  display: flex;
+  align-items: center;
+  background: #110E16;
+  border-radius: 8px;
+  padding: 4px;
+  gap: 2px;
+}
+
+/* coisas dos botoes - links */
+.menu a {
+  background: linear-gradient(to bottom, #414141, #242424);
+  color: #ccc;
+  text-align: center;
+  padding: 10px 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: 0.15s;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+/* Hover com brilho */
+.menu a:hover {
+  filter: brightness(1.2);
+  color: #eeea7f;
+  text-shadow: 0 0 8px #fafdca;
+}
+
+/* simula clicado */
+.menu a:active {
+  background: #1d1d1d; /*ver como faz p deixar ele "marcado" e manter a cor*/
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
+  color: #eeea7f;
+}
