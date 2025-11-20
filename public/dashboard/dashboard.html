@@ -87,7 +87,7 @@
     window.onload = exibirAquariosDoUsuario();
 
     function exibirAquariosDoUsuario() {
-        var aquarios = JSON.parse(sessionStorage.AQUARIOS);
+        var aquarios = JSON.parse(sessionStorage.AQUARIOS); // aqui talvez seja o negocio do vetor q troquei para DADOS (talvez nao seija o melhor nome - jogadas pd ser?)
         aquarios.forEach(item => {
             document.getElementById("btnAquario").innerHTML += `
             <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
@@ -193,7 +193,7 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta, idAquario) {
+    function plotarGrafico(resposta, idAquario) { //preciso trocar por id de usuario????????????
 
         console.log('iniciando plotagem do gráfico...');
 
