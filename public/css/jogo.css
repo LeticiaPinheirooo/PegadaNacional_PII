@@ -1,12 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 body {
     margin: 0;
     padding: 0;
-    background-image: url("../assets/img/fundo-telaJogo.png");   
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
     background-color: #e3d3bb; 
     width: 100vw;
     height: 100vh;
     overflow: hidden;
 }
+
+#jogo-complete{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-direction: row;
+}
+
+.jogo-esquerda {    
+    display: flex;
+    flex: 1;
+    background-color: #e3d3bb; 
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    height: auto;
+}
+
+.jogo-esquerda img{
+    background-size: cover;
+    height: auto;
+    width: 100%;
+}
+
+.botoes-direita{
+    display: flex;
+    flex: 1; /*se nao quebra tudo*/
+    background-image: url(../assets/img/garcom-do-som.png);
+    background-color: pink;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    background-size: cover;
+    height: auto;
+    width: 100%;
+}
+

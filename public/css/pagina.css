@@ -56,11 +56,13 @@
   width: 270px;
   height: 550px;
   border-radius: 15px;
-  padding: 10px;
-  /*box-sizing: border-box; -- so se der muito errado com a img*/ 
-  /*display: flex;*/
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .cidade-card img {
@@ -72,11 +74,25 @@
 }
 
 .texto-card {
+  opacity: 0;
+  transition: 0.3s ease;
   color: #fff;
-  font-size: 18px;
-  text-align: justify;  /*fica como bloco */
-  line-height: 1.3; /*é p separação entre um linha e outra*/
-  margin-top: 20px;
+  font-size: 17px;
+  text-align: justify;
+  line-height: 1.3;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+}
+
+.cidade-card:hover .texto-card {
+  opacity: 1; /*p deixar o texto visivel*/
+}
+
+.cidade-card:hover {
+  filter: brightness(65%);
+  transition: 0.3s ease;
 }
 
 
