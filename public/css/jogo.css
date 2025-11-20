@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+
+    /* imagem que você enviou */
+    background-image: url("../assets/img/fundo-telaJogo.png");
+
+    /* impede distorção */
+    background-size: cover;
+
+    /* centraliza a imagem */
+    background-position: center center;
+
+    /* impede repetição */
+    background-repeat: no-repeat;
+
+    /* cor ao redor da imagem, caso não cubra tudo */
+    background-color: #e3d3bb; /* cor parecida com o fundo da imagem */
+    
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}

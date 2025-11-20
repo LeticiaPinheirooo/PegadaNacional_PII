@@ -1,5 +1,4 @@
 /*esse doc mexe nas paginas de INDEX*/
-
 @import url('https://fonts.cdnfonts.com/css/rookiepunk'); /*fonte de titulo*/
 /*@import url('https://fonts.cdnfonts.com/css/bosil-unique'); /*fonte do corpo*/
 @import url('https://fonts.cdnfonts.com/css/rosbed'); /*fonte da navbar*/
@@ -23,9 +22,8 @@ body {
   color: #fff;
 }
 
-
 .rookie-font{
-  font-family: 'RookiePunk', sans-serif; /*so arrumar quais vao com essa fonte*/
+  font-family: 'RookiePunk', sans-serif;
   letter-spacing: 2px;
   font-weight: 200;
 }
@@ -63,7 +61,7 @@ body {
 .logo-box {
   width: 45px;
   height: 30px;
-  background-image: url("/assets/img/LOGO.png"); /* nao sei como funciona - no html tem a img tbm */
+  background-image: url("/assets/img/LOGO.png"); /*  no html tem a img tbm */
   border-radius: 4px;
 }
 
@@ -106,22 +104,13 @@ body {
   text-shadow: 0 0 8px #fafdca;
 }
 
-/* simula clicado */
-.menu a:active {
-  background: #1d1d1d; /*ver como faz p deixar ele "marcado" e manter a cor*/
-  box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
-  color: #eeea7f;
-}
-
-
-/* dropdown "escondido" */
+/* dropdown */
 .dropdown {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-/* botão do artistas */
 .dropdown .drop-botao {
   background: linear-gradient(to bottom, #414141, #242424);
   color: #ccc;
@@ -149,7 +138,7 @@ body {
   top: 100%;
   left: 0;
   background: #1d1d1d;
-  border-radius: 0px; /*sla mano*/
+  border-radius: 0px; 
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
   overflow: hidden;
   flex-direction: column;
@@ -157,7 +146,6 @@ body {
   z-index: 10;
 }
 
-/* coisa p os itens do dropdown */
 .dropdown-conteudo a {
   color: #ccc;
   padding: 10px 14px;
@@ -178,7 +166,7 @@ body {
   display: flex;
 }
 
-/* video do banner*/
+/*video do banner*/
 .video-section {
   width: 100%;
   height: 650px; 
@@ -202,7 +190,6 @@ body {
   background-position: center;
   margin: 0px;
 }
-
 
 /* RODAPÉ */
 .footer {
