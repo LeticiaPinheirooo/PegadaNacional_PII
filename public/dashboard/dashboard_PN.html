@@ -3,30 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Pegada Nacional </title>
+    <title>Dashboard | Pegada Nacional</title>
+
     <link rel="stylesheet" href="../css/dashboard_PN.css">
-    <!--parte do icon que ainda nao arrumei-->
-
-    
+    <script src="../js/sessao.js"></script>
+    <script src="../js/alerta.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-    <header class="navbar"">
-    <div class="navbar-content">
-      <div class="logo">
-        <div class="logo-box">
-          <img src="assets/img/LOGO.png" alt="logo">
+    <header class="navbar">
+        <div class="navbar-content">
+
+            <div class="logo">
+                <div class="logo-box">
+                    <img src="assets/img/LOGO.png" alt="logo">
+                </div>
+                <span class="rookie-font">PEGADA NACIONAL</span>
+            </div>
+
+            <div class="menu-dash">
+                <div class="hello">
+                    <h3 class="rookie-font">Olá, <span id="b_usuario">usuário</span>!</h3>
+                </div>
+            </div>
+            <nav class="menu">
+                <a href="../jogoCompleteLetra.html">Tentar de novo</a>
+                <a onclick="limparSessao()">Sair</a>
+            </nav>
+
         </div>
-        <span class="rookie-font">PEGADA NACIONAL</span> 
-      </div>
-      <nav class="menu"> 
-        <a href="jogoCompleteLetra.html">Tentar de novo</a> <!--icone de retry sla-->
-        <a onclick="limparSessao()">SAIR</a> 
-        </div> 
-      </nav>
-    </div>
-    
-  </header>
-
-
+    </header>
 </body>
 </html>

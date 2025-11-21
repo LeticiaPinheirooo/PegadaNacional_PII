@@ -1,15 +1,37 @@
 /*essa é diferente da do index*/
+@import url('https://fonts.cdnfonts.com/css/rookiepunk'); /*fonte de titulo*/
+/*@import url('https://fonts.cdnfonts.com/css/bosil-unique'); /*fonte do corpo*/
+@import url('https://fonts.cdnfonts.com/css/rosbed'); /*fonte da navbar*/
+
 *{
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: 'Rosbed', sans-serif; /*trocar dps essa é so da navbar*/
+  /*font-family: 'bosil unique Regular', sans-serif;*/
+  letter-spacing: 1px;
+  background-color: rgb(54, 54, 55);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+
+.rookie-font{
+  font-family: 'RookiePunk', sans-serif; /*so arrumar quais vao com essa fonte*/
+  letter-spacing: 2px;
+  font-weight: 200;
 }
 
 .navbar {
     background-color: #110E16;
-    height: 100%;
+    height: 100vh;
     width: 280px;
-    margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,6 +40,7 @@
 }
 
 .navbar-content {
+  height: 100%;
   width: 95%;
   display: flex;
   flex-direction: column;
@@ -49,7 +72,7 @@
 /* menu dos botoes */
 .menu {
   display: flex;
-  align-items: center;
+  align-items: end;
   background: #110E16;
   border-radius: 8px;
   padding: 4px;
