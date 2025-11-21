@@ -1,51 +1,129 @@
+@import url('https://fonts.cdnfonts.com/css/bosil-unique'); /*fonte do corpo*/
+
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
     background-color: #e3d3bb; 
     width: 100vw;
     height: 100vh;
     overflow: hidden;
 }
 
-#jogo-complete{
+#jogo-complete {
     display: flex;
-    align-content: center;
-    align-items: center;
-    overflow: hidden;
-    flex-direction: row;
+    height: 100vh;
 }
 
+/* parte do jogo *******************************************/
 .jogo-esquerda {    
-    display: flex;
     flex: 1;
-    background-color: #e3d3bb; 
-    flex-direction: column;
+    position: relative; 
+    display: flex;
     justify-content: center;
-    width: 40%;
-    height: auto;
+    align-items: center;
 }
 
 .jogo-esquerda img{
-    background-size: cover;
-    height: auto;
     width: 100%;
+    margin-bottom: 0;
+    height: auto;
 }
 
-.botoes-direita{
+/* jogo em cida da img */
+.container-jogo {
+    position: absolute;
+    width: 55%;
+    height: 55%;
+    top: 38%;
+    left: 28%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 15px;
+
+    
+}
+
+/*  lado do botao do garcom */
+.lado-direito {
+    flex: 1;
     display: flex;
-    flex: 1; /*se nao quebra tudo*/
-    background-image: url(../assets/img/garcom-do-som.png);
-    background-color: pink;
-    flex-direction: column;
-    justify-content: center;
-    justify-items: center;
-    background-size: cover;
-    height: auto;
-    width: 100%;
+    flex-direction: column;  
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
 }
 
+.topo-direito {
+    width: 100%;
+    height: 70%;               
+    display: flex;
+    justify-content: center;  
+    align-items: end;       
+}
+
+.container-azul {
+    position: relative;
+    width: 250px;
+    height: 280px;
+    background-color: #0B4B8B;
+    margin-left: -50px;
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.base-direita {
+    width: 100%;
+    height: 50%;               
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;    
+}
+
+.garcom-img {
+    height: 100%;     
+    width: auto;      
+    object-fit: contain;
+}
+
+
+.caixa-discos{
+    height: 200px;
+    width: 220px;
+    background-color: #e3d3bb;
+    border-radius: 15px;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.caixa-botoes .botoes{
+    border-radius: 8px;
+    justify-content: center;
+    padding: 10px;
+    background-color: #e9ba22;
+    font-weight: bold;
+    font-family: 'bosil unique Regular', sans-serif;
+}
+
+.botoes:hover{
+    background-color: #d3a920;
+    cursor: pointer;
+
+}
+
+.exclamacao {
+    position: absolute;
+    top: -85px;        
+    right: -80px;      
+    width: 190px;      
+    height: 70%;
+    z-index: 10;
+   
+}

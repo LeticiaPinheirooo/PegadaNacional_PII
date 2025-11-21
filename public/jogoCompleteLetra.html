@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complete a letra | Pegada Nacional</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/jogo.css">
-    <icon></icon>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete a letra | Pegada Nacional</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/jogo.css">
+  <icon></icon>
 </head>
+
 <body>
-    <header class="navbar">
+  <header class="navbar">
     <div class="navbar-content">
       <div class="logo">
         <div class="logo-box">
@@ -32,34 +34,44 @@
         <a href="jogoCompleteLetra.html">JOGAR</a>
         <a href="login.html">LOGIN</a>
       </nav>
-    </div> 
+    </div>
   </header>
-
-
-  <!--parte que vai o jogo msm-->
 
   <section id="jogo-complete">
     <div class="jogo-esquerda">
       <img src="assets/img/caderno-jogo-removebg-preview.png" alt="Caderno-jogo">
 
-      <div class="container-jogo" sytle="border: 1px solid black; width: 200px; height: 300px; index-z: 2;">
-
+      <div class="container-jogo">
+        <!-- aqui tem q ser dinamico tb -->
       </div>
-      
     </div>
-  
 
-  <div class="botoes-direita">
-        <!--fazer uma funcao para que ele aleatorize as coisas-->
-        <div class="musica-aleat-img">
-            <!--vai aparecer na mao do carinha la-->
-            
+    <div class="lado-direito">
+      <div class="topo-direito">
+
+        
+
+        <div class="container-azul">
+           <img class="exclamacao" src="assets/img/exclamacao.png" alt="!">
+
+          <div class="caixa-discos">
+            <img src="" alt=""> <!--isso tem q ser dinamico p mudar de acordo com a musica que tocar-->
+          </div>
+          <div class="caixa-botoes">
+            <button class="botoes"onclick="verificar()">Verificar</button>
+            <button class="botoes" onclick="aleatorizar()">Aleatorizar Música</button>
+          </div>
         </div>
-        <button onclick="aleatorizar()">Aleatorizar</button>
+      </div>
 
-    
-  </div>
-    </section>
+      <div class="base-direita">
+        <img src="assets/img/garcom-do-som-cortado.png" alt="Garçom" class="garcom-img">
+      </div>
+    </div>
+
+  </section>
+
 
 </body>
+
 </html>
