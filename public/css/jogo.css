@@ -37,12 +37,13 @@ body {
 .container-jogo {
     position: absolute;
     width: 55%;
-    height: 55%;
+    height: auto;
     top: 38%;
     left: 28%;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 8px;
-    padding: 15px;
+    padding: 35px;
+    color: black;
 
     
 }
@@ -67,10 +68,10 @@ body {
 
 .container-azul {
     position: relative;
-    width: 250px;
+    width: 290px;
     height: 280px;
     background-color: #0B4B8B;
-    margin-left: -50px;
+    margin-left: -40px;
     border-radius: 12px;
     padding: 10px;
     display: flex;
@@ -96,8 +97,8 @@ body {
 
 .caixa-discos{
     height: 200px;
-    width: 220px;
-    background-color: #e3d3bb;
+    width: 260px;
+    background-color: #0B4B8B;
     border-radius: 15px;
     padding: 5px;
     margin-bottom: 15px;
@@ -126,4 +127,12 @@ body {
     height: 70%;
     z-index: 10;
    
+}
+
+.timer {
+  font-size: 26px;
+  color: black;
+  font-family: 'bosil unique Regular', sans-serif;
+  font-weight: bold;
+  margin-top: 15px;
 }

@@ -41,27 +41,43 @@
     <div class="jogo-esquerda">
       <img src="assets/img/caderno-jogo-removebg-preview.png" alt="Caderno-jogo">
 
-      <div class="container-jogo">
-        <!-- aqui tem q ser dinamico tb -->
+      <div class="container-jogo" id="container-jogo"  style="display: none;">
+
+        <div id="temporizador" class="timer"">Timer: 90s</div>
+        <div id="campo-letra">
+
+        </div>
       </div>
+    </div>
+
+
     </div>
 
     <div class="lado-direito">
       <div class="topo-direito">
 
-        
-
+        <!--tudo sobre as musicas-->
         <div class="container-azul">
-           <img class="exclamacao" src="assets/img/exclamacao.png" alt="!">
+          <div id="texto-regras" style="padding: 5px 5px; line-height: 1.2rem; text-align: justify; margin-top: 30%;">
+            <h3>vamos começar</h3>
+            <p style="margin-top: 5px;">Aperte em aleatorizar para iniciar o jogo. lembre-se, você tem 90 segundos para preencher
+            as lacunas</p>
+          </div>
+          <img class="exclamacao" src="assets/img/exclamacao.png" alt="!">
 
           <div class="caixa-discos">
-            <img src="" alt=""> <!--isso tem q ser dinamico p mudar de acordo com a musica que tocar-->
+
+            <div id="box-imagem" style="display: none; margin: 20px 5px; align-items: center; width: 100%; height: auto;">
+              <img id="imagem-musica" src="" alt="disco">
+            </div>
+
           </div>
           <div class="caixa-botoes">
-            <button class="botoes"onclick="verificar()">Verificar</button>
+            <button class="botoes" onclick="verificar()">Verificar</button>
             <button class="botoes" onclick="aleatorizar()">Aleatorizar Música</button>
           </div>
         </div>
+
       </div>
 
       <div class="base-direita">
@@ -71,7 +87,7 @@
 
   </section>
 
-
+  <script src="js/jogo.js"></script>
 </body>
 
 </html>
