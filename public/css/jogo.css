@@ -98,7 +98,7 @@ body {
 .caixa-discos{
     height: 200px;
     width: 260px;
-    background-color: #0B4B8B;
+    background: transparent;
     border-radius: 15px;
     padding: 5px;
     margin-bottom: 15px;

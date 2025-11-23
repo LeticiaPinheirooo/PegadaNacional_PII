@@ -92,13 +92,15 @@ var tempo = 90;
 var timer = '';
 
 function aleatorizar() {
+
+    
     
     document.getElementById("texto-regras").style.display = "none";
     document.getElementById("container-jogo").style.display = "block";
     document.getElementById("box-imagem").style.display = "block";
     clearInterval(timer);
-    tempo = 30; // **************************************************************************************
-    document.getElementById("temporizador").innerText = `Timer: ${tempo}s`;
+    tempo = 35; // **************************************************************************************
+    temporizador.innerHTML = `Timer: ${tempo}s`;
 
     var indice = Math.floor(Math.random() * musicas.length);
     musicaAtual = musicas[indice];
@@ -109,11 +111,11 @@ function aleatorizar() {
 
     var idInput = 0;
 
-    
     musicaAtual.frase.forEach(function (parte) {
 
         if (parte.includes("_____")) {
-            campo.innerHTML += `<input type="text" id="resp${idInput}" style="border: none; border-bottom: 2px solid #9c9c9cff; font-weight: bolder; background:transparent;  width: auto"> `;
+            campo.innerHTML += `<input type="text" id="resp${idInput}" 
+            style="border: none; border-bottom: 2px solid #9c9c9cff; background:transparent; text-align: center; font-family: 'RookiePunk', sans-serif; letter-spacing: 3px; font-weigth: 300; font-size: 16px;"> `;
             idInput++;
         } else {
             campo.innerHTML += parte + " ";
