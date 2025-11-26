@@ -13,6 +13,20 @@ var musicas = [
         respostas: ["encontrar", "não", "multidão", "coração", "compartilhar"],
         imagem: "assets/img/discos/capa-charlieBrown.png"
     },
+    {
+        artista: "Charlie Brown Jr.",
+        titulo: "Tamo Ai na Atividade",
+        frase: [
+            "Eu nasci", "_____", ",", "mas não nasci otário", "",
+            "Eu é que não caio no conto do", "_____",
+            "Eu tenho fé em Deus pra", "_____", "qualquer parada",
+            "Chega com", "_____", "na minha quebrada",
+            "Eu não vim pra me", "_____",
+            "Eu vim pra", "_____"
+        ],
+        respostas: ["pobre", "vigário", "resolver", "respeito", "explicar", "confundir"],
+        imagem: "assets/img/discos/capa-charlieBrown.png"
+    },
 
     {
         artista: "Capital Inicial",
@@ -26,6 +40,35 @@ var musicas = [
         ],
         respostas: ["acontecer", "vê", "escuro", "solidão", "escondeu"],
         imagem: "assets/img/discos/capa-capInicial.png"
+    },
+    {
+        artista: "Charlie Brown Jr.",
+        titulo: "Dias de luta, Dias de glória",
+        frase: [
+            "Na minha vida nem tudo", "_____", "",
+            "Mas quanto mais a gente", "_____", "mais a gente", "_____",
+            "Hoje estou", "_____", "porque eu sonhei com você", "",
+            "E amanhã posso chorar por não poder te ver mais",
+            "O seu sorriso vale mais que um", "_____", ""
+        ],
+        respostas: ["acontece", "rala", "cresce", "feliz", "diamante"],
+        imagem: "assets/img/discos/capa-charlieBrown.png"
+    },
+    {
+        artista: "Charlie Brown Jr.",
+        titulo: "Vicios e Vitudes",
+        frase: [
+            "Eu nunca tive muito a ver com", "_____",
+            "O livro que ela", "_____", "eu não li",
+            "Eu nunca tive muito a ver com ela",
+            "O filme que ela", "_____", "eu não vi",
+            "Como chegar nela eu nem sei", "",
+            "Ela é tão", "_____", "e eu aqui pichando muro",
+            "Como", "_____", "nela eu nem sei",
+            "Ela é tão diferente e eu igual a todo", "_____"
+        ],
+        respostas: ["ela", "ama", "adora", "interessante", "chegar", "mundo"],
+        imagem: "assets/img/discos/capa-charlieBrown.png"
     },
 
     {
@@ -42,10 +85,41 @@ var musicas = [
         respostas: ["dormir", "dia", "frente", "sagrado", "amargo"],
         imagem: "assets/img/discos/capa-legiaoUrbana.png"
     },
+    {
+        artista: "Legião Urbana",
+        titulo: "Pais e Filhos",
+        frase: [
+            "Quero", "_____",
+            "Vou", "_____", "de casa",
+            "Posso dormir aqui com", "_____", "?",
+            "Estou com medo",
+            "Tive um", "_____",
+            "Só vou voltar depois das", "_____", "",
+            "Meu filho vai ter nome de", "_____",
+            "Quero o", "_____", "mais bonito"
+        ],
+        respostas: ["colo", "fugir", "vocês", "pesadelo", "três", "santo", "nome"],
+        imagem: "assets/img/discos/capa-legiaoUrbana.png"
+    },
+    {
+        artista: "Legião Urbana",
+        titulo: "Geração Coca-Cola",
+        frase: [
+            "Comercial e industrial", "",
+            "Mas agora", "_____", "nossa vez",
+            "Vamos cuspir de volta o lixo em", "_____", "de vocês", "",
+            "Somos", "_____", "filhos da revolução",
+            "Somos", "_____", "sem religião",
+            "Somos o", "_____", "da nação",
+            "Geração Coca-Cola"
+        ],
+        respostas: ["chegou", "cima", "os", "burgueses", "futuro"],
+        imagem: "assets/img/discos/capa-legiaoUrbana.png"
+    },
 
     {
         artista: "Engenheiros do Hawaii",
-        titulo: "Era um garoto e como eu amava...",
+        titulo: "Era um garoto e como eu...",
         frase: [
             "Era um garoto que como eu", "_____", "os Beatles e os Rolling Stones",
             "Girava o mundo sempre a", "_____", "",
@@ -54,6 +128,22 @@ var musicas = [
             "Havia mil garotas a", "_____", ""
         ],
         respostas: ["amava", "cantar", "américa", "assim", "fim"],
+        imagem: "assets/img/discos/capa-engHawaii.png"
+    },
+    {
+        artista: "Engenheiros do Hawaii",
+        titulo: "Somos Quem Podemos Ser",
+        frase: [
+            "Um dia me", "_____",
+            "Que as nuvens não eram de", "_____",
+            "Um", "_____", "me disseram",
+            "Que os ventos às vezes erram a direção",
+            "E tudo ficou tão", "_____",
+            "Um intervalo na", "_____",
+            "Uma estrela de brilho raro",
+            "Um disparo para um", "_____",
+        ],
+        respostas: ["disseram", "algodão", "dia", "claro", "escuridão", "coração"],
         imagem: "assets/img/discos/capa-engHawaii.png"
     },
 
@@ -88,39 +178,38 @@ var musicas = [
 
 
 var musicaAtual = '';
-var tempo = 90;
+var tempo = 60;
 var timer = '';
 
 function aleatorizar() {
 
-    
-    
     document.getElementById("texto-regras").style.display = "none";
     document.getElementById("container-jogo").style.display = "block";
     document.getElementById("box-imagem").style.display = "block";
     clearInterval(timer);
-    tempo = 35; // **************************************************************************************
+    tempo = 60; // **************************************************************************************
     temporizador.innerHTML = `Timer: ${tempo}s`;
 
     var indice = Math.floor(Math.random() * musicas.length);
     musicaAtual = musicas[indice];
 
-    
+
     var campo = document.getElementById("campo-letra");
-    campo.innerHTML = ""; 
+    campo.innerHTML = "";
 
     var idInput = 0;
 
-    musicaAtual.frase.forEach(function (parte) {
+    for (var i = 0; i < musicaAtual.frase.length; i++) {
+        var parte = musicaAtual.frase[i];
 
         if (parte.includes("_____")) {
             campo.innerHTML += `<input type="text" id="resp${idInput}" 
-            style="border: none; border-bottom: 2px solid #9c9c9cff; background:transparent; text-align: center; font-family: 'RookiePunk', sans-serif; letter-spacing: 3px; font-weigth: 300; font-size: 16px;"> `;
+        style="border: none; border-bottom: 2px solid #9c9c9cff; background:transparent; text-align: center; font-family: 'RookiePunk', sans-serif; letter-spacing: 3px; font-weigth: 300; font-size: 16px;"> `;
             idInput++;
         } else {
             campo.innerHTML += parte + " ";
         }
-    });
+    }
 
     // troca a img
     document.getElementById("imagem-musica").src = musicaAtual.imagem;
@@ -133,7 +222,7 @@ function iniciarTimer() {
     timer = setInterval(function () {
 
         tempo--;
-        document.getElementById("temporizador").innerText = `Timer: ${tempo}s`;
+        temporizador.innerHTML = `Timer: ${tempo}s`;
 
         if (tempo <= 0) {
             clearInterval(timer);
@@ -146,8 +235,6 @@ function iniciarTimer() {
 function verificar() {
 
     clearInterval(timer); // para o cronômetro
-    //preciso que os campos fiquem disabled dps de acabar o timer aaa
-
     var acertos = 0;
 
     // p conferir oq foi escrito
@@ -157,13 +244,22 @@ function verificar() {
         var txt = input.value.toLowerCase().trim();
 
         if (txt === musicaAtual.respostas[i]) {
-            input.style.color = "#00a100ff"; 
+            input.style.color = "#00a100ff";
             acertos++;
         } else {
-            input.style.color = "#921515ff"; 
+            input.style.color = "#921515ff";
         }
     }
 
     var porcentagem = Math.round((acertos / musicaAtual.respostas.length) * 100);
     alert("Você acertou " + porcentagem + "% da música!"); //fazer isso ser uma caixinha dps
+
+    //colocar uma media de pontuação por usuarios (sentido de competição - comparação)
 }
+
+
+// criar uma associativa para o banco - musica respostas e artistas respostas
+//adicionar tela para o usuario selecionar a quantidade de musicas que ele quer jogar
+
+// adicionar uma funcão para que os campos fiquem disabled para dps que o timer acabar
+// e pular para a proxima musica da partida.

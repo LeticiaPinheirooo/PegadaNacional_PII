@@ -24,7 +24,7 @@
 
             <div class="menu-dash">
                 <div class="hello">
-                    <h3 class="rookie-font">Olá, <span id="b_usuario">usuário</span>!</h3>
+                    <h3 class="rookie-font" style="font-size: 25px;">Olá, <span id="b_usuario">usuário</span>!</h3>
                 </div>
             </div>
             <nav class="menu">
@@ -85,3 +85,15 @@
     </div>
 </body>
 </html>
+
+
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+
+    //acho q isso nao vai aqui
+    if(sessionStorage.NOME_USUARIO == null || sessionStorage.NOME_USUARIO == undefined){
+        alert('Faça o cadastro/login primeiro para acessar sua dashboar.')
+    }
+</script>
