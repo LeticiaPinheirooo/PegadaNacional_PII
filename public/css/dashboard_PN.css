@@ -11,8 +11,7 @@
 
 
 body {
-  font-family: 'Rosbed', sans-serif; /*trocar dps essa é so da navbar*/
-  /*font-family: 'bosil unique Regular', sans-serif;*/
+  font-family: 'Rosbed', sans-serif; 
   letter-spacing: 1px;
   background-color: rgb(54, 54, 55);
   min-height: 100vh;
@@ -23,7 +22,7 @@ body {
 
 
 .rookie-font{
-  font-family: 'RookiePunk', sans-serif; /*so arrumar quais vao com essa fonte*/
+  font-family: 'RookiePunk', sans-serif; 
   letter-spacing: 2px;
   font-weight: 200;
 }
@@ -48,7 +47,6 @@ body {
   align-items: center;
 }
 
-/* parte da logo */
 .logo {
   display: flex;
   align-items: center;
@@ -94,18 +92,12 @@ body {
   box-shadow: 0 3px 6px rgba(0,0,0,0.3);
 }
 
-/* Hover com brilho */
+
 .menu a:hover {
   filter: brightness(1.2);
   color: #eeea7f;
   text-shadow: 0 0 8px #fafdca;
 }
 
-/* simula clicado */
-.menu a:active {
-  background: #1d1d1d; /*ver como faz p deixar ele "marcado" e manter a cor*/
-  box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
-  color: #eeea7f;
-}
 
 /* campos da dash **************************************************************************** */
