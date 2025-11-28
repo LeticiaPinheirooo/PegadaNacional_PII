@@ -65,11 +65,11 @@
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Por favor, preencha todos os campos para entrar.";
             finalizarAguardar();
-            setInterval(sumirMensagem, 5000); //nao sei se coloca aqui
+            setInterval(sumirMensagem, 5000); 
             return false;
         }
         else {
-            //mudei um monte de coisa  aqui -- tirei o sumir mensagem pq quebrava a troca de tela
+           
             fetch("/usuarios/autenticar", {
             method: "POST",
             headers: {
@@ -93,12 +93,12 @@
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
 
-                    //p nao parecer uma lista de aquarios sla
+                  
                     sessionStorage.DADOS = JSON.stringify(json.dados)
 
                     setTimeout(function () {
 
-                        window.location = "dashboard/dashboard_PN.html"; // redireciona p outra pagin dps do login
+                        window.location = "dashboard/dashboard_PN.html"; 
                     }, 1000);
 
                 });

@@ -232,6 +232,8 @@ function iniciarTimer() {
     }, 1000);
 }
 
+var porcentagem = 0;
+
 function verificar() {
 
     clearInterval(timer); // para o cronômetro
@@ -251,10 +253,37 @@ function verificar() {
         }
     }
 
-    var porcentagem = Math.round((acertos / musicaAtual.respostas.length) * 100);
-    alert("Você acertou " + porcentagem + "% da música!"); //fazer isso ser uma caixinha dps
+    porcentagem = Math.round((acertos / musicaAtual.respostas.length) * 100);
+    resultPartida();
+    // alert("Você acertou " + porcentagem + "% da música!"); 
 
     //colocar uma media de pontuação por usuarios (sentido de competição - comparação)
+}
+
+
+function resultPartida() {
+    //colocar um set interval tb
+    var resultado = porcentagem;
+    var imagem_ponto_baixo = `<img src="assets/img/imgJogo/card_resultado_0.png" alt="aaaaaaaaa"}">`;
+    var imagem_ponto_medio = `<img src="assets/img/imgJogo/card_resultado_50.png" alt="${alert("Você acertou " + resultado + "% da música!")}">`;
+    var imagem_ponto_alto = `<img src="assets/img/imgJogo/card_resultado_100.png" alt="${alert("Você acertou " + resultado + "% da música!")}"">`;
+
+    if (resultado >= 0 && resultado <= 40) {
+
+        document.getElementById("div_resultado").style.display = "block";
+        div_resultado.innerHTML = `${imagem_ponto_baixo}`;
+
+    } else if (resultado >= 41 && resultado <= 59) {
+
+        document.getElementById("div_resultado").style.display = "block";
+        div_resultado.innerHTML = `${imagem_ponto_medio}`;
+
+    } else {
+
+        document.getElementById("div_resultado").style.display = "block";
+        div_resultado.innerHTML = `${imagem_ponto_alto}`;
+
+    }
 }
 
 

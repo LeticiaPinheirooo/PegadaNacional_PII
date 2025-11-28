@@ -20,7 +20,7 @@ body {
 /*  card do negocio todo */
 .cartao-login {
   display: flex;
-  background: rgba(0, 0, 0, 0.6); /*o ultimo afeta a opacidade do elemento sla*/
+  background: rgba(0, 0, 0, 0.6); 
   color: #fff;
   border-radius: 16px;
   overflow: hidden;
@@ -76,7 +76,7 @@ body {
 .formulario input {
   background: transparent;
   border: none;
-  border-bottom: 1px solid #666; /*so a linha do input*/
+  border-bottom: 1px solid #666;
   color: #fff;
   margin-bottom: 20px;
   padding: 10px 5px;
@@ -96,7 +96,7 @@ body {
   padding: 12px;
   font-weight: bold;
   cursor: pointer;
-  /**transition: background 0.3s;*/
+ 
 }
 
 .formulario button:hover {

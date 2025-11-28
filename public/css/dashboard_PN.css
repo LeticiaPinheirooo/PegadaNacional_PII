@@ -1,5 +1,4 @@
-/*essa é diferente da do index*/
-@import url('https://fonts.cdnfonts.com/css/rookiepunk'); /*fonte de titulo*/
+@import url('https://fonts.cdnfonts.com/css/rookiepunk'); /*fonte de titulo -- essa fonte tem problema com numero*/
 /*@import url('https://fonts.cdnfonts.com/css/bosil-unique'); /*fonte do corpo*/
 @import url('https://fonts.cdnfonts.com/css/rosbed'); /*fonte da navbar*/
 
@@ -56,7 +55,6 @@ body {
 .logo-box {
   width: 45px;
   height: 30px;
-  background-image: url("/assets/img/LOGO.png"); /* nao sei como funciona - no html tem a img tbm */
   border-radius: 4px;
 }
 
