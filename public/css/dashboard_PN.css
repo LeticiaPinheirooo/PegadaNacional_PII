@@ -1,8 +1,10 @@
-@import url('https://fonts.cdnfonts.com/css/rookiepunk'); /*fonte de titulo -- essa fonte tem problema com numero*/
+@import url('https://fonts.cdnfonts.com/css/rookiepunk');
+/*fonte de titulo -- essa fonte tem problema com numero*/
 /*@import url('https://fonts.cdnfonts.com/css/bosil-unique'); /*fonte do corpo*/
-@import url('https://fonts.cdnfonts.com/css/rosbed'); /*fonte da navbar*/
+@import url('https://fonts.cdnfonts.com/css/rosbed');
+/*fonte da navbar*/
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -10,7 +12,7 @@
 
 
 body {
-  font-family: 'Rosbed', sans-serif; 
+  font-family: 'Rosbed', sans-serif;
   letter-spacing: 1px;
   background-color: rgb(54, 54, 55);
   min-height: 100vh;
@@ -20,21 +22,21 @@ body {
 }
 
 
-.rookie-font{
-  font-family: 'RookiePunk', sans-serif; 
+.rookie-font {
+  font-family: 'RookiePunk', sans-serif;
   letter-spacing: 2px;
   font-weight: 200;
 }
 
 .navbar {
-    background-color: #110E16;
-    height: 100vh;
-    width: 280px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 6px;
-    box-shadow: 0 2px 8px rgba(0,0,0);
+  background-color: #110E16;
+  height: 100vh;
+  width: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0);
 }
 
 .navbar-content {
@@ -87,7 +89,7 @@ body {
   border-radius: 2px;
   text-decoration: none;
   transition: 0.15s;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -99,3 +101,60 @@ body {
 
 
 /* campos da dash **************************************************************************** */
+
+/* lado esquerdo */
+.dashboards1 {
+  margin: 20px 15px 20px 20px;
+  width: 50%;
+  height: auto;
+  flex-direction: column;
+
+}
+
+.linha-kpi {
+  flex-direction: row;
+  justify-content: space-between;
+  display: flex;
+  gap: 15px;
+}
+
+.caixa-kpi {
+  width: 365px;
+  height: 130px;
+  background-color: #4a4a5a;
+  border-radius: 15px;
+  gap: 20px"
+
+}
+
+.acertosArtista {
+  margin-top: 15px;
+  width: 100%;
+  height: 505px;
+  background-color: #575763;
+  border-radius: 15px;
+}
+
+/* lado direito */
+.dashboards2 {
+  margin: 20px 20px 20px 3px;
+  width: 30%;
+  height: auto;
+  flex-direction: column;
+}
+
+.certosGenero {
+  width: 100%;
+  height: 250px;
+  background-color: #575763;
+  border-radius: 15px;
+}
+
+.estatisticas {
+  margin-top: 15px;
+  width: 230px;
+  height: 130px;
+  background-color: #4a4a5a;
+  border-radius: 15px;
+  gap: 20px
+}

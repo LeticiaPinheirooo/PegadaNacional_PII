@@ -13,8 +13,7 @@
 }
 
 body {
-  font-family: 'Rosbed', sans-serif; /*trocar dps essa é so da navbar*/
-  /*font-family: 'bosil unique Regular', sans-serif;*/
+  font-family: 'Rosbed', sans-serif;
   letter-spacing: 1px;
   background-color: white;
   min-height: 100vh;
@@ -24,13 +23,12 @@ body {
 }
 
 
-.rookie-font{
-  font-family: 'RookiePunk', sans-serif; /*so arrumar quais vao com essa fonte*/
+.rookie-font {
+  font-family: 'RookiePunk', sans-serif;
   letter-spacing: 2px;
   font-weight: 200;
 }
 
-/* navbar aqui */
 .navbar {
   position: fixed;
   top: 20px;
@@ -42,8 +40,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000; /*faz ficar uma camada acima*/
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  z-index: 1000;  /*faz ficar uma camada acima*/
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .navbar-content {
@@ -63,7 +61,6 @@ body {
 .logo-box {
   width: 45px;
   height: 30px;
-  background-image: url("/assets/img/LOGO.png"); /* nao sei como funciona - no html tem a img tbm */
   border-radius: 4px;
 }
 
@@ -96,7 +93,7 @@ body {
   border-radius: 2px;
   text-decoration: none;
   transition: 0.15s;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 /* Hover com brilho */
@@ -106,15 +103,7 @@ body {
   text-shadow: 0 0 8px #fafdca;
 }
 
-/* simula clicado */
-.menu a:active {
-  background: #1d1d1d; /*ver como faz p deixar ele "marcado" e manter a cor*/
-  box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
-  color: #eeea7f;
-}
-
-
-/* dropdown "escondido" */
+/* dropdown dos artistas - fica escondido*/
 .dropdown {
   position: relative;
   display: flex;
@@ -133,13 +122,13 @@ body {
   border-radius: 2px;
   text-decoration: none;
   transition: 0.15s;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .dropdown .drop-botao:hover {
   filter: brightness(1.2); /*efeito de q ta brilhando quando passa o mouse*/
   color: #eeea7f;
-  text-shadow: 0 0 8px #fafdca; 
+  text-shadow: 0 0 8px #fafdca;
 }
 
 /* conteúdo do dropdown */
@@ -149,8 +138,8 @@ body {
   top: 100%;
   left: 0;
   background: #1d1d1d;
-  border-radius: 0px; /*sla mano*/
-  box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+  border-radius: 0px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   flex-direction: column;
   min-width: 140px;
@@ -173,15 +162,14 @@ body {
   color: #cae2fd;
 }
 
-/* Mostra a caixinha quando passa o mouse */
+/* caixinha quando passa o mouse */
 .dropdown:hover .dropdown-conteudo {
   display: flex;
 }
 
-/* video do banner*/
 .video-section {
   width: 100%;
-  height: 650px; 
+  height: 650px;
   overflow: hidden;
   position: relative;
   background: #000;
@@ -191,20 +179,53 @@ body {
   width: 100%;
   height: 100%;
   border: none;
-  object-fit: cover; /*nao sei se gostei - ta torto o video ainda*/
+  object-fit: cover;
+  /*nao sei se gostei - ta torto o video ainda*/
 }
 
-#divisao-cores{
+#divisao-cores {
   height: 15px;
-  background-image: url("../assets/img/coresDivisao.png"); 
+  background-image: url("../assets/img/coresDivisao.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   margin: 0px;
 }
 
+.bastidores {
+  height: 650px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1C456E;
+  flex: 1; 
+  flex-direction: row;
+  margin: 0;
+}
+
+
+.container-img img {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: auto;
+  width: 100%;
+  background-size: cover;
+}
+
+/* parte do texto na direita ************************************** */
+.conteudo-ods{
+  justify-content: center ;
+  align-items: left;
+  flex-direction: column;
+  display: flex;
+  border: 3px solid yellow;
+  height: 450px;
+  width: 95%;
+  margin: 15px 20px;
+}
+
+
 
 /* RODAPÉ */
-.footer {
-  
-}
+.footer {}
