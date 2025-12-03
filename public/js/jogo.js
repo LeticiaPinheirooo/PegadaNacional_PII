@@ -1,5 +1,6 @@
 var musicas = [
     {
+        id: 1,
         artista: "Charlie Brown Jr.",
         titulo: "Me Encontra",
         frase: [
@@ -14,6 +15,7 @@ var musicas = [
         imagem: "assets/img/discos/capa-charlieBrown.png"
     },
     {
+        id: 2,
         artista: "Charlie Brown Jr.",
         titulo: "Tamo Ai na Atividade",
         frase: [
@@ -29,6 +31,7 @@ var musicas = [
     },
 
     {
+        id: 3,
         artista: "Capital Inicial",
         titulo: "Todas as Noites",
         frase: [
@@ -42,6 +45,7 @@ var musicas = [
         imagem: "assets/img/discos/capa-capInicial.png"
     },
     {
+        id: 4,
         artista: "Charlie Brown Jr.",
         titulo: "Dias de luta, Dias de glória",
         frase: [
@@ -55,6 +59,7 @@ var musicas = [
         imagem: "assets/img/discos/capa-charlieBrown.png"
     },
     {
+        id: 5,
         artista: "Charlie Brown Jr.",
         titulo: "Vicios e Vitudes",
         frase: [
@@ -72,6 +77,7 @@ var musicas = [
     },
 
     {
+        id: 6,
         artista: "Legião Urbana",
         titulo: "Tempo Perdido",
         frase: [
@@ -86,6 +92,7 @@ var musicas = [
         imagem: "assets/img/discos/capa-legiaoUrbana.png"
     },
     {
+        id: 7,
         artista: "Legião Urbana",
         titulo: "Pais e Filhos",
         frase: [
@@ -102,6 +109,7 @@ var musicas = [
         imagem: "assets/img/discos/capa-legiaoUrbana.png"
     },
     {
+        id: 8,
         artista: "Legião Urbana",
         titulo: "Geração Coca-Cola",
         frase: [
@@ -118,6 +126,7 @@ var musicas = [
     },
 
     {
+        id: 9,
         artista: "Engenheiros do Hawaii",
         titulo: "Era um garoto e como eu...",
         frase: [
@@ -131,6 +140,7 @@ var musicas = [
         imagem: "assets/img/discos/capa-engHawaii.png"
     },
     {
+        id: 10,
         artista: "Engenheiros do Hawaii",
         titulo: "Somos Quem Podemos Ser",
         frase: [
@@ -148,6 +158,7 @@ var musicas = [
     },
 
     {
+        id: 11,
         artista: "Pitty",
         titulo: "Equalize",
         frase: [
@@ -162,6 +173,7 @@ var musicas = [
     },
 
     {
+        id: 12,
         artista: "Rita Lee",
         titulo: "Lança Perfume",
         frase: [
@@ -254,41 +266,52 @@ function verificar() {
     }
 
     porcentagem = Math.round((acertos / musicaAtual.respostas.length) * 100);
-    resultPartida();
-    // alert("Você acertou " + porcentagem + "% da música!"); 
+    alert("Você acertou " + porcentagem + "% da música!"); 
 
-    //colocar uma media de pontuação por usuarios (sentido de competição - comparação)
+
+    var usuario_id = sessionStorage.ID_USUARIO;
+
+     fetch("/tentativa/salvar-tentativa", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            idUsuario: usuario_id,
+            idMusica: musicaAtual.id,
+            acertos: acertos,
+            porcentagem: porcentagem,
+           
+        })
+    })
+    .then(res => res.json())
+    .then(function (salvou)
+    {   console.log("salvou:", salvou)})
+    .catch(function (erro) 
+        {console.error(erro)});
 }
 
 
-function resultPartida() {
-    //colocar um set interval tb
-    var resultado = porcentagem;
-    var imagem_ponto_baixo = `<img src="assets/img/imgJogo/card_resultado_0.png" alt="aaaaaaaaa"}">`;
-    var imagem_ponto_medio = `<img src="assets/img/imgJogo/card_resultado_50.png" alt="${alert("Você acertou " + resultado + "% da música!")}">`;
-    var imagem_ponto_alto = `<img src="assets/img/imgJogo/card_resultado_100.png" alt="${alert("Você acertou " + resultado + "% da música!")}"">`;
+// nao sei se gosto mais disso
+//function resultPartida() {
+//     //colocar um set interval tb
+//     var resultado = porcentagem;
+//     var imagem_ponto_baixo = `<img src="assets/img/imgJogo/card_resultado_0.png" alt="aaaaaaaaa"}">`;
+//     var imagem_ponto_medio = `<img src="assets/img/imgJogo/card_resultado_50.png" alt="${alert("Você acertou " + resultado + "% da música!")}">`;
+//     var imagem_ponto_alto = `<img src="assets/img/imgJogo/card_resultado_100.png" alt="${alert("Você acertou " + resultado + "% da música!")}"">`;
 
-    if (resultado >= 0 && resultado <= 40) {
+//     if (resultado >= 0 && resultado <= 40) {
 
-        document.getElementById("div_resultado").style.display = "block";
-        div_resultado.innerHTML = `${imagem_ponto_baixo}`;
+//         document.getElementById("div_resultado").style.display = "block";
+//         div_resultado.innerHTML = `${imagem_ponto_baixo}`;
 
-    } else if (resultado >= 41 && resultado <= 59) {
+//     } else if (resultado >= 41 && resultado <= 59) {
 
-        document.getElementById("div_resultado").style.display = "block";
-        div_resultado.innerHTML = `${imagem_ponto_medio}`;
+//         document.getElementById("div_resultado").style.display = "block";
+//         div_resultado.innerHTML = `${imagem_ponto_medio}`;
 
-    } else {
+//     } else {
 
-        document.getElementById("div_resultado").style.display = "block";
-        div_resultado.innerHTML = `${imagem_ponto_alto}`;
+//         document.getElementById("div_resultado").style.display = "block";
+//         div_resultado.innerHTML = `${imagem_ponto_alto}`;
 
-    }
-}
-
-
-// criar uma associativa para o banco - musica respostas e artistas respostas
-//adicionar tela para o usuario selecionar a quantidade de musicas que ele quer jogar
-
-// adicionar uma funcão para que os campos fiquem disabled para dps que o timer acabar
-// e pular para a proxima musica da partida.
+//     }
+// }
