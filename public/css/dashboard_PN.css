@@ -116,6 +116,7 @@ body {
   justify-content: space-between;
   display: flex;
   gap: 15px;
+  display: flex;
 }
 
 .caixa-kpi {
@@ -123,7 +124,11 @@ body {
   height: 130px;
   background-color: #4a4a5a;
   border-radius: 15px;
-  gap: 20px"
+  padding: 20px;
+  justify-content: center;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
 
 }
 

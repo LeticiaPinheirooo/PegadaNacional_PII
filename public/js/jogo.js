@@ -290,6 +290,8 @@ function verificar() {
 }
 
 
+
+
 // nao sei se gosto mais disso
 //function resultPartida() {
 //     //colocar um set interval tb

@@ -36,25 +36,39 @@
         </div>
     </header>
 
-    <div id="div_aguardar" class="loading-div" style="z-index: 100; display: flex; position: absolute; background-color: rgba(0, 0, 0, 0.4); justify-content: center; align-items: center; height: 100vh; width: 100%; display: none;">
-        <img style="width: 600px; height: 300px; margin-top: 15px;" src="../assets/video/DJ_loading.gif" id="loading-gif">
+    <div id="div_aguardar" class="loading-div"
+        style="z-index: 100; display: flex; position: absolute; background-color: rgba(0, 0, 0, 0.4); justify-content: center; align-items: center; height: 100vh; width: 100%; display: none;">
+        <img style="width: 600px; height: 300px; margin-top: 15px;" src="../assets/video/DJ_loading.gif"
+            id="loading-gif">
     </div>
 
     <div class="dashboards1">
         <div class="linha-kpi">
 
             <div class="caixa-kpi">
-                taxa de acerto
+                <h4>Taxa de Acertos</h4>
+                <div id="div_KPI_taxaAcertos" style=" height: auto; width: 80%; font-size: 32px; justify-content: center;">
+                    <span id="resultado"
+                        style="font-family: 'Courier New', Courier, monospace; font-weight: bolder;">0%
+                    </span>
+                </div>
             </div>
 
             <div class="caixa-kpi">
-                Jogos finalizados
+                <h4>Músicas jogadas</h4>
+                <div id="KPI-jogosFinalizados" style=" height: auto; width: 80%; font-size: 32px; justify-content: center;">
+                    <span id="resultado_jogadas"
+                        style="font-family: 'Courier New', Courier, monospace; font-weight: bolder;">0
+                    </span>
+                </div>
             </div>
 
         </div>
 
         <div class="caixa-kpi acertosArtista">
-            acertos por artista
+            <div id="GRAFICO_acertosArtistas">
+                <canvas id="graficoArtistas"></canvas>
+            </div>
         </div>
 
 
@@ -63,22 +77,43 @@
     <div class="dashboards2">
         <div class="coluna-kpi">
             <div class="caixa-kpi certosGenero">
-                acertos por geenro de musica
+                <div id="GRAFICO-acertosGenero">
+                    <h3>Sua margem de acertos em relação outros jogadores</h3>
+                </div>
             </div>
 
             <div class="linha-kpi">
+
                 <div class="caixa-kpi estatisticas">
-                    artista mais acertado
+                    <div id="KPI-artistaFav" >
+                        <h4>Artista que mais conhece</h4>
+                        <span id="artista_fav" style=" height: auto; width: 80%; font-size: 20px; justify-content: center;">
+                    <span id="resultado_ArtistaTop"
+                        style="font-family: 'Courier New', Courier, monospace; font-weight: bolder; margin-top: 2%;">Sem dados Adicionados</span>
+                        
+                    </div>
                 </div>
 
                 <div class="caixa-kpi estatisticas">
-                    musica com mais acertos
+                    <div id="KPI-musicaFav">
+                        <h4>Música que mais conhece</h4>
+                        <span id="artista_fav" style=" height: auto; width: 80%; font-size: 18px; justify-content: center;">
+                    <span id="resultado_musicaTop"
+                        style="font-family: 'Courier New', Courier, monospace; font-weight: bolder; margin-top: 2%;">Sem dados Adicionados</span>
+                        
+
+                    </div>
                 </div>
             </div>
 
-            <div class="caixa-kpi"
-                style="margin-top: 15px; width: 100%; height: 240px; background-color: #575763; border-radius: 15px;">
-                acesse a playlist :)
+            <div class="caixa-kpi caixa-playlist"
+                style="margin-top: 15px; width: 100%; height: 240px; background-color: #d64e30; border-radius: 15px; padding: 15px; flex-direction: column; display: flex; justify-content: center; align-items: center; ">
+                <h4 style="margin: 20px;">Acesse a playlist para mais</h4>
+                <div class="capa-playlist">
+                    <a href="https://link.deezer.com/s/31JnbQnGPJVbyxT0ZAc7c">
+                        <img style="width: 150px; height: 150px; border-radius: 16px;"
+                            src="../assets/img/img_capa_playlistPN.png" alt=""></a>
+                </div>
             </div>
         </div>
 
@@ -88,10 +123,9 @@
 
 </html>
 
-
-
 <script>
     var nome = sessionStorage.NOME_USUARIO;
+    var idUsuario = sessionStorage.ID_USUARIO;
 
     if (nome == null || nome == undefined) {
         alert('Faça o cadastro/login primeiro para acessar sua dashboard.')
@@ -101,248 +135,141 @@
         aguardar();
 
         setTimeout(function () {
-
             finalizarAguardar();
             div_aguardar.style.display = "none";
             window.location = "/login.html";
         }, 1500);
 
-    } else{
+    } else {
         b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-        console.log('funfa')
+        console.log('logou');
 
-        let proximaAtualizacao;
+        fetch(`/dashboard/acertosPorArtista/${idUsuario}`)
+            .then(res => res.json())
+            //a partir daqui ele vira array por causa do res.json
+            .then(function (dados) {
+                console.log("Dados grafico-acertosArtistas recebidos:", dados);
 
-        window.onload = exibirPontosDoUsuario();
+                var artistas = [];
+                var acertos = [];
 
-        function exibirPontosDoUsuario() {
-            var pontos = JSON.parse(sessionStorage.DADOSJOGADA);
-            aquarios.forEach(item => {
-                document.getElementById("btnAquario").innerHTML += `
-            <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
-            `
+                for (var i = 0; i < dados.length; i++) {
+                    artistas.push(dados[i].artista); // as posicoes do eixo y e x
+                    acertos.push(dados[i].total_acertos);
+                }
 
-                document.getElementById("graficos").innerHTML += `
-                <div id="grafico${item.id}" class="display-none">
-                    <h3 class="tituloGraficos">
-                        <span id="tituloAquario${item.id}">${item.descricao}</span>
-                    </h3>
-                    <div class="graph">
-                        <canvas id="myChartCanvas${item.id}"></canvas>
-                    </div>
-                    <div class="label-captura">
-                        <p id="avisoCaptura${item.id}" style="color: white"></p>
-                    </div>
-                </div>
-            `
-
-                obterDadosGrafico(item.id)
+                GraficoAcertosPorArtista(artistas, acertos); // artistas e o y
+            })
+            .catch(function (erro) {
+                console.log("deu errado no grafico de acertos", erro)
             });
 
-            if (aquarios.length > 0) {
-                exibirAquario(aquarios[0].id)
-            }
-        }
+        function GraficoAcertosPorArtista(artistas, acertos) {
+            const grafico_acertoArtista = document.getElementById('graficoArtistas');
 
-        function alterarTitulo(idAquario) {
-            var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
-            var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idAquario).descricao;
-            tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + descricao + "</span>"
-        }
-
-        function exibirAquario(idAquario) {
-            let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
-
-            for (i = 0; i < todosOsGraficos.length; i++) {
-                // exibindo - ou não - o gráfico
-                if (todosOsGraficos[i].id != idAquario) {
-                    let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
-                    if (elementoAtual.classList.contains("display-block")) {
-                        elementoAtual.classList.remove("display-block")
-                    }
-                    elementoAtual.classList.add("display-none")
-
-                    // alterando estilo do botão
-                    let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
-                    if (btnAtual.classList.contains("btn-pink")) {
-                        btnAtual.classList.remove("btn-pink")
-                    }
-                    btnAtual.classList.add("btn-white")
-                }
-            }
-
-            // exibindo - ou não - o gráfico
-            let graficoExibir = document.getElementById(`grafico${idAquario}`)
-            graficoExibir.classList.remove("display-none")
-            graficoExibir.classList.add("display-block")
-
-            // alterando estilo do botão
-            let btnExibir = document.getElementById(`btnAquario${idAquario}`)
-            btnExibir.classList.remove("btn-white")
-            btnExibir.classList.add("btn-pink")
-        }
-
-        // O gráfico é construído com três funções:
-        // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
-        // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
-        // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
-
-        // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
-        // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
-        // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
-
-        //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-        //     Para ajustar o "select", ajuste o comando sql em src/models
-        function obterDadosGrafico(idAquario) {
-
-            alterarTitulo(idAquario)
-
-            if (proximaAtualizacao != undefined) {
-                clearTimeout(proximaAtualizacao);
-            }
-
-            fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-                if (response.ok) {
-                    response.json().then(function (resposta) {
-                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                        resposta.reverse();
-
-                        plotarGrafico(resposta, idAquario);
-
-                    });
-                } else {
-                    console.error('Nenhum dado encontrado ou erro na API');
-                }
-            })
-                .catch(function (error) {
-                    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-                });
-        }
-
-        // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-        // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-        // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-        function plotarGrafico(resposta, idAquario) { //preciso trocar por id de usuario????????????
-
-            console.log('iniciando plotagem do gráfico...');
-
-            // Criando estrutura para plotar gráfico - labels
-            let labels = [];
-
-            // Criando estrutura para plotar gráfico - dados
-            let dados = {
-                labels: labels,
-                datasets: [{
-                    label: 'Umidade',
-                    data: [],
-                    fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.1
+            new Chart(grafico_acertoArtista, {
+                type: 'bar',
+                data: {
+                    labels: artistas,
+                    datasets: [{
+                        label: 'Acertos',
+                        data: acertos,
+                        backgroundColor: ['rgba(194,23,23, 1', 'rgba(254,167,18, 1', 'rgba(35,35,149, 1', 'rgba(230, 98, 24, 1', 'rgba(141, 135, 14, 1'],
+                        borderWidth: 1,
+                        borderRadius: 8
+                    }]
                 },
-                {
-                    label: 'Temperatura',
-                    data: [],
-                    fill: false,
-                    borderColor: 'rgb(199, 52, 52)',
-                    tension: 0.1
-                }]
-            };
 
-            console.log('----------------------------------------------')
-            console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-            console.log(resposta)
-
-            // Inserindo valores recebidos em estrutura para plotar o gráfico
-            for (i = 0; i < resposta.length; i++) {
-                var registro = resposta[i];
-                labels.push(registro.momento_grafico);
-                dados.datasets[0].data.push(registro.umidade);
-                dados.datasets[1].data.push(registro.temperatura);
-            }
-
-            console.log('----------------------------------------------')
-            console.log('O gráfico será plotado com os respectivos valores:')
-            console.log('Labels:')
-            console.log(labels)
-            console.log('Dados:')
-            console.log(dados.datasets)
-            console.log('----------------------------------------------')
-
-            // Criando estrutura para plotar gráfico - config
-            const config = {
-                type: 'line',
-                data: dados,
-            };
-
-            // Adicionando gráfico criado em div na tela
-            let myChart = new Chart(
-                document.getElementById(`myChartCanvas${idAquario}`),
-                config
-            );
-
-            setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-        }
-
-
-        // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-        // buscando a última medida inserida em tabela contendo as capturas, 
-
-        //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-        //     Para ajustar o "select", ajuste o comando sql em src/models
-        function atualizarGrafico(idAquario, dados, myChart) {
-
-
-
-            fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-                if (response.ok) {
-                    response.json().then(function (novoRegistro) {
-
-                        obterdados(idAquario);
-                        // alertar(novoRegistro, idAquario);
-                        console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                        console.log(`Dados atuais do gráfico:`);
-                        console.log(dados);
-
-                        let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
-                        avisoCaptura.innerHTML = ""
-
-
-                        if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-                            console.log("---------------------------------------------------------------")
-                            console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                            avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-                            console.log("Horário do novo dado capturado:")
-                            console.log(novoRegistro[0].momento_grafico)
-                            console.log("Horário do último dado capturado:")
-                            console.log(dados.labels[dados.labels.length - 1])
-                            console.log("---------------------------------------------------------------")
-                        } else {
-                            // tirando e colocando valores no gráfico
-                            dados.labels.shift(); // apagar o primeiro
-                            dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
-                            dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                            dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-
-                            dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                            dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
-
-                            myChart.update();
+                options: {
+                    indexAxis: 'y', //horizontal
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: 'Acertos por Artista',
+                            color: '#fff',
+                            font: { size: 20 }
                         }
+                    },
 
-                        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                        proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-                    });
-                } else {
-                    console.error('Nenhum dado encontrado ou erro na API');
-                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+                    scales: {
+                        x: {
+                            ticks: { color: '#fff' },
+                        },
+                        y: {
+                            ticks: { color: '#fff' },
+                        }
+                    }
                 }
+            });
+        }
+
+        // KPI do TaxaAcertos -------------------------------------------------------------------------------------------
+        fetch(`/dashboard/KPI_taxaAcertos/${idUsuario}`)
+            .then(res => res.json())
+            //a partir daqui ele vira array por causa do res.json
+            .then(function (taxa) {
+                console.log('ta na taxa');
+                console.log("Dados KPI-taxaAcertos recebidos:", taxa);
+
+                if(taxa[0].taxa_acertos == null){
+                    resultado.innerHTML = `<span style="font-size: 18px;">Inicie uma tentativa</span>`;    
+                }else{
+                    resultado.innerHTML = `${(taxa[0].taxa_acertos)}%`;
+
+                }
+
+
             })
-                .catch(function (error) {
-                    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-                });
+            .catch(function (erro) {
+                console.log("deu errado na KPI taxa", erro)
+            });
+
+
+            // KPI do musicasJogadas -------------------------------------------------------------------------------------------
+        fetch(`/dashboard/KPI_musicasJogadas/${idUsuario}`)
+            .then(res => res.json())
+            //a partir daqui ele vira array por causa do res.json
+            .then(function (jogadas) {
+                console.log('ta na musgas jogadas');
+                console.log("Dados KPI-musicasJogadas recebidos:", jogadas);
+
+                resultado_jogadas.innerHTML = `${jogadas[0].musicas_diferentes}`;
+
+            })
+            .catch(function (erro) {
+                console.log("deu errado na KPI musicasJogadas", erro)
+            });
+
+
+
+        //KPI do artista que mais acerta ------------------------------------------------------------------------------------
+        fetch(`/dashboard/KPI_artistaFav/${idUsuario}`)
+            .then(res => res.json())
+            //a partir daqui ele vira array por causa do res.json
+            .then(function (artista) {
+                console.log("Dados KPI-artistaFav recebidos: ", artista);
+
+                resultado_ArtistaTop.innerHTML = `${(artista[0].artista)}`;
+
+            })
+            .catch(function (erro) {
+                console.log("deu errado na KPI artistaFav ", erro)
+            });
+
+            //KPI da musica que mais acerta ------------------------------------------------------------------------------------
+        fetch(`/dashboard/KPI_musicaFav/${idUsuario}`)
+            .then(res => res.json())
+            .then(function (musica) {
+                console.log("Dados KPI-musicaFav recebidos: ", musica);
+
+                resultado_musicaTop.innerHTML = `${(musica[0].musica)}`;
+
+            })
+            .catch(function (erro) {
+                console.log("deu errado na KPI musicaFav ", erro)
+            });
 
         }
-    }
 </script>
