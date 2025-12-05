@@ -1,9 +1,12 @@
 /*esse doc mexe nas paginas de INDEX*/
 
-@import url('https://fonts.cdnfonts.com/css/rookiepunk'); /*fonte de titulo*/
+@import url('https://fonts.cdnfonts.com/css/rookiepunk');
+/*fonte de titulo*/
 /*@import url('https://fonts.cdnfonts.com/css/bosil-unique'); /*fonte do corpo*/
-@import url('https://fonts.cdnfonts.com/css/rosbed'); /*fonte da navbar*/
-@import url('https://fonts.cdnfonts.com/css/vtks-highlight'); /*bastidores talvez*/
+@import url('https://fonts.cdnfonts.com/css/rosbed');
+/*fonte da navbar*/
+@import url('https://fonts.cdnfonts.com/css/vtks-highlight');
+/*bastidores talvez*/
 
 
 * {
@@ -40,7 +43,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;  /*faz ficar uma camada acima*/
+  z-index: 1000;
+  /*faz ficar uma camada acima*/
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
@@ -126,7 +130,8 @@ body {
 }
 
 .dropdown .drop-botao:hover {
-  filter: brightness(1.2); /*efeito de q ta brilhando quando passa o mouse*/
+  filter: brightness(1.2);
+  /*efeito de q ta brilhando quando passa o mouse*/
   color: #eeea7f;
   text-shadow: 0 0 8px #fafdca;
 }
@@ -193,12 +198,12 @@ body {
 }
 
 .bastidores {
-  height: 650px; 
+  height: 650px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #1C456E;
-  flex: 1; 
+  flex: 1;
   flex-direction: row;
   margin: 0;
 }
@@ -214,18 +219,72 @@ body {
 }
 
 /* parte do texto na direita ************************************** */
-.conteudo-ods{
-  justify-content: center ;
-  align-items: left;
-  flex-direction: column;
-  display: flex;
-  border: 3px solid yellow;
-  height: 450px;
-  width: 95%;
-  margin: 15px 20px;
+.container-bastidores {
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  font-family: Arial, sans-serif; /*a outra fotne nao gosta de numero*/
+  color: white;
+  box-sizing: border-box;
 }
 
+.cabecalho-bastidores {
+  align-items: center;
+  gap: 15px;
+  display: flex;
+  margin-bottom: 40px;
+}
 
+.cabecalho-bastidores h1 {
+  font-size: 40px;
+  font-weight: bold;
+}
 
-/* RODAPÉ */
-.footer {}
+.linha {
+  width: 3px;
+  height: 40px;
+  background: #f0c240;
+}
+
+.subtitulo {
+  font-size: 18px;
+}
+
+.conteudo-bastidores {
+  display: flex;
+  gap: 40px;
+}
+
+.texto-bastidores {
+  width: 40%;
+}
+
+.texto-bastidores h2 {
+  font-size: 26px;
+  margin-bottom: 5px;
+}
+
+.texto-bastidores h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+
+}
+
+.texto-bastidores p {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.grade-caixas {
+  width: 60%;
+  display: grid;
+  gap: 25px;
+}
+
+.caixa {
+  width: 80%;
+  height: auto;
+  padding: 20px;
+  background: #ce502d;
+  border-radius: 6px;
+}
