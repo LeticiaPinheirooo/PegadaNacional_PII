@@ -81,7 +81,8 @@ module.exports = {
     acertosPorArtista,
     KPI_taxaAcertos,
     KPI_musicasJogadas,
-    KPI_artistaFav,
-    KPI_musicaFav
+   KPI_artistaFav,
+   KPI_musicaFav
+
    
 };
